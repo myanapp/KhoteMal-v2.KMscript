@@ -12,15 +12,76 @@
 
 </head>
 
-<body>
+<body onload="M.AutoInit()">
+    <!-- Nav Section -->
+    <nav class="blue darken-3" role="navigation">
 
-    <pre km-prefix>
-        {
-            layout: "default"
-        }
-    </pre>
+        <a href="/" class="brand-logo">
+            <img class="brand-logo" src="/assets/images/logo-white-adjTransparent.png" height="58px">
+        </a>
+        <a href="javascript:void(0);" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-    <script src="/assets/dist/materialize/init.min.js" defer=""></script>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/index.html">မူလစာမ်က္ႏွာ</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav blue darken-4">
+            <li class="logo">
+                <img src="/assets/images/logo-white-adjTransparent.png">
+            </li>
+
+            <li><a href="/index.html">မူလစာမ်က္ႏွာ</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Contents -->
+    <div class="container">
+        <div class="section" id="main-content">
+
+            <br><br>
+            <form name="account" onsubmit="return false">
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="tel" class="validate" name="id" autocomplete="off" autofocus="true">
+                    <label for="icon_prefix">အေကာင့္နံပါတ္</label>
+                    <span class="helper-text">
+                        သင့္ <a href="//opendota.com" target="_blank"><b><u>OPENDOTA</b></a></u> Account ID
+                        ကိုသာျဖည့္သြင္းပါ။
+                    </span>
+                </div>
+
+                <button type="submit" class="btn waves-effect btn-small">ေဆာင္ရြက္ရန္
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+
+        <br><br>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="page-footer blue darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="javascript:void(0)">Link 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright blue darken-3">
+            <div class="container">
+                Powered by <a class="blue-text text-lighten-3" href="javascript:void(0)">Ethereal</a> <kbd>&</kbd>
+                <a class="blue-text text-lighten-3" href="javascript:void(0)">Myanma Saungkyo Co., Ltd.</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/layout/js/register.js" defer=""></script>
 
 </body>
 
