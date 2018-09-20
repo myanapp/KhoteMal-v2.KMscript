@@ -5,25 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="/assets/dist/ui/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="/assets/dist/ui/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/assets/dist/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/assets/dist/materialize/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
   <title>Homepage [KHOTEMAL]</title>
-  <script src="/assets/dist/ui/materialize/js/init.min.js" async="" defer=""></script>
 
 </head>
 
 <body>
 
-  <data km-prefix="onload">
-    KM.require('nav');
-    KM.require('/index');
+  <pre km-prefix>
+        {
+            "layout": "default"
+        }
+    </pre>
 
-    KM.script('layout/js/index');
+  <script src="/assets/dist/materialize/init.min.js" defer=""></script>
 
-    KM.require('footer');
-  </data>
-  
 </body>
 
 </html>
