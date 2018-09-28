@@ -37,7 +37,7 @@ nav ul#nav-mobile img {
 
 .section:first-child {
   min-height: 30em
-} 
+}
 
 #index-banner h5 {
   line-height: 3rem
@@ -49,4 +49,13 @@ nav ul#nav-mobile img {
 
 #player_name {
   font-weight: 480;
+}
+
+[km-data=null] {
+  cursor: not-allowed;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 300;
+  font-style: normal;
+  font-size:0.1em;
+  color: #a0a0a0
 }

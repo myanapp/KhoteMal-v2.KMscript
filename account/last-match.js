@@ -44,13 +44,13 @@ analyze_response = () => {
             kda = ƒƒ.kills + '/ ' + ƒƒ.deaths + '/ ' + ƒƒ.assists,
             net = (ƒƒ.total_gold / 1000).toFixed(2) + ' k';
 
-        $.all('#km-data')[i].setAttribute('km-data', acc_id);
         $.all('#hero_avatar')[i].src = avatar_ico;
 
-        $.all('#player_name')[i].innerHTML = (ƒƒ.personaname||'<font style="cursor:not-allowed;font-weight:300;" size="2px" color="#a0a0a0">Unknown</font>');
+        $.all('#player_name')[i].setAttribute('km-data', acc_id);
+        $.all('#player_name')[i].innerHTML = (ƒƒ.personaname || 'Unknown');
         $.all('#hero_name')[i].innerHTML = hero.localized_name;
-        $.all('#player_data')[i].innerHTML = 'KDA: ' + kda;
-        $.all('#player_data')[i].innerHTML = 'Networth: ' + net;
+        $.all('#player_data')[i].innerHTML = 'KDA: ' + kda + '  | ';
+        $.all('#player_data')[i].innerHTML += '  |    Networth: ' + net;
     }
 
 }
