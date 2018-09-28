@@ -12,7 +12,7 @@ const $ = {
     xmlhttp.open('GET', x, true)
     xmlhttp.send()
   }
-  
+
 }
 
 /*
@@ -87,7 +87,7 @@ const search = {
       "balanced": true
     }];
 
-    return $arrayThis[x].name;
+    return $arrayThis[x];
   },
   winner: (x) => {
     if (x == 0 || x == false) {
@@ -104,27 +104,27 @@ const search = {
     }, {
       "id": 1,
       "npc": "game_mode_all_pick",
-      "name": "All Pick [AP]",
+      "name": "All Pick",
       "balanced": true
     }, {
       "id": 2,
       "npc": "game_mode_captains_mode",
-      "name": "Captains Mode [CM]",
+      "name": "Captains Mode",
       "balanced": true
     }, {
       "id": 3,
       "npc": "game_mode_random_draft",
-      "name": "Random Draft [RD]",
+      "name": "Random Draft",
       "balanced": true
     }, {
       "id": 4,
       "npc": "game_mode_single_draft",
-      "name": "Single Draft [SD]",
+      "name": "Single Draft",
       "balanced": true
     }, {
       "id": 5,
       "npc": "game_mode_all_random",
-      "name": "All Random [AR]",
+      "name": "All Random",
       "balanced": true
     }, {
       "id": 6,
@@ -208,7 +208,7 @@ const search = {
       "name": "Mutation"
     }]
 
-    return $arrayThis[x].name
+    return $arrayThis[(x || 0)]
   },
   skills: (x) => {
     x = Number(x);

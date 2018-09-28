@@ -56,6 +56,26 @@ nav ul#nav-mobile img {
   font-family: 'Courier New', Courier, monospace;
   font-weight: 300;
   font-style: normal;
-  font-size:0.1em;
+  font-size: 0.1em;
   color: #a0a0a0
+}
+
+.keyboard-focused {
+  background: transparent;
+}
+
+span.badge.new {
+  font-weight: 700 !important;
+}
+
+.xent {
+  text-align: center;
+}
+
+.dire {
+  color: red
+}
+
+.radiant {
+  color: green
 }

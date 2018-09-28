@@ -9,6 +9,13 @@ const $_ACCOUNT = [],
                 $_ACCOUNT.push(_data);
 
                 analyze_response();
+                gmode = _data.game_mode - 21;
+                console.log(gmode);
+                $.id('radiant_score').innerHTML = _data.radiant_score;
+                $.id('dire_score').innerText = _data.dire_score;
+                $.id('game-mode').innerText = search.mode(gmode).name;
+                $.id('lobby-type').innerText = search.type(_data.lobby_type).name;
+                $.id('timestamp').innerText = Date(_data.start_time);
 
             }
         }

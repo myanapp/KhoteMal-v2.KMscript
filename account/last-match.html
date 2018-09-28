@@ -12,10 +12,6 @@
 
   <title>Dashboard [KHOTEMAL]</title>
 
-  <script>
-
-  </script>
-
 </head>
 
 <body onload="M.AutoInit()">
@@ -47,18 +43,41 @@
 
       <div class="row">
         <div class="col s12">
-          <div id="node-data">
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td class="radiant xent">
+                  <h2 id="radiant_score"></h2>
+                  <p>Radiant</p>
+                </td>
+                <td class="xent">
+                  <p>
+                    <b><span id="game-mode"></span></b> <br />
+                    [<span id="lobby-type"></span>] <br /> <br />
+                    <font size="1.5px" color="#656565">on
+                      <span id="timestamp"></span>
+                    </font>
+                  </p>
+                </td>
+                <td class="dire xent">
+                  <h2 id="dire_score"></h2>
+                  <p>Dire</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
 
           <!-- Radiant Players -->
           <div class="collection">
-            <a href="javascript:void(0);" class="collection-item active">RADIANT</a>
+            <a class="collection-item teal lighten-1 white-text">
+              RADIANT</a>
             <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar">
                     <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
                   </div>
                 </div>
@@ -66,41 +85,49 @@
                   <span id="player_data"></span>
                 </div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body">
                   <span id="player_data"></span>
                 </div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
                   </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
                   </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
@@ -109,50 +136,59 @@
 
           <!-- Dire Players -->
           <div class="collection">
-            <a href="javascript:void(0);" class="collection-item active">DIRE</a>
+            <a class="collection-item red lighten-1 white-text">
+              DIRE</a>
             <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
+            </ul>
+            <ul class="collapsible">
               <li id="km-data">
                 <div class="collapsible-header">
                   <div class="collection-item avatar"> <img src="/assets/images/undefined.jpg" alt="" class="circle" id="hero_avatar">
-                    <span class="title" id="player_name"></span> <br/>
+                    <span class="title" id="player_name"></span> <br />
                     <span id="hero_name"> </span>
-                   </div>
+                  </div>
                 </div>
                 <div class="collapsible-body"><span id="player_data"></span></div>
               </li>
