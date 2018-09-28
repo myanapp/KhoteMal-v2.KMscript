@@ -1,4 +1,4 @@
-let KM = () => {
+var KM = () => {
     _read = JSON.parse(document.querySelector('pre[km-prefix]').innerHTML), document.querySelector('pre[km-prefix]').remove();
     let KM = {
         build: (data) => {
