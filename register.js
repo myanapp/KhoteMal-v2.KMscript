@@ -9,7 +9,7 @@ document.querySelector('button[type=submit].btn').addEventListener('click', func
     if (isNum == true && isLthOk == true) {
         console.log('working...')
         KM('ajax', 'https://api.opendota.com/api/players/' + acc_id, '$_ACCOUNT');
-        
+
     } else {
 
         if (acc_id == '') {
@@ -31,3 +31,26 @@ document.querySelector('button[type=submit].btn').addEventListener('click', func
     })
 
 })
+
+window.onload = function () {
+    var km_autoinit = $.all('[km-autoinit]'),
+        stringName = (x, y) => {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    _data = JSON.parse(this.responseText);
+                    km_autoinit[y].innerText = _data.profile['personaname'];
+                }
+            }
+            xmlhttp.open('GET', 'https://api.opendota.com/api/players/' + x, true);
+            xmlhttp.send();
+
+            $.all('.playerid')[y].setAttribute('href', '/account/last-match.html?' + x);
+        }
+
+    for (var i = 0; i < km_autoinit.length; i++) {
+        innerText = km_autoinit[i].innerText;
+        stringName(innerText, i);
+    }
+
+}

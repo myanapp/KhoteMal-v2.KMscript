@@ -1,9 +1,3 @@
-const $ = {
-    all: (x) => document.querySelectorAll(x),
-    one: (x) => document.querySelector(x),
-    id: (x) => document.getElementById(x)
-}
-
 // me - 373924056 || app - 326044547 || pai - 349652911 || aba - 896811688
 
 const $_ACCOUNT = [],
@@ -53,7 +47,7 @@ analyze_response = () => {
         $.all('#km-data')[i].setAttribute('km-data', acc_id);
         $.all('#hero_avatar')[i].src = avatar_ico;
 
-        $.all('#player_name')[i].innerHTML = (ƒƒ.personaname||'Player ' + i);
+        $.all('#player_name')[i].innerHTML = (ƒƒ.personaname||'<font style="cursor:not-allowed;font-weight:300;" size="2px" color="#a0a0a0">Unknown</font>');
         $.all('#hero_name')[i].innerHTML = hero.localized_name;
         $.all('#player_data')[i].innerHTML = 'KDA: ' + kda;
         $.all('#player_data')[i].innerHTML = 'Networth: ' + net;

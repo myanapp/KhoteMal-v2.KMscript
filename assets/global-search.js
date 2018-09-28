@@ -1,3 +1,20 @@
+const $ = {
+  all: (x) => document.querySelectorAll(x),
+  one: (x) => document.querySelector(x),
+  id: (x) => document.getElementById(x),
+  request: (x) => {
+    xmlhttp = new XMLHttpRequest()
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        $_ACCOUNT.push(JSON.parse(this.responseText))
+      }
+    }
+    xmlhttp.open('GET', x, true)
+    xmlhttp.send()
+  }
+  
+}
+
 /*
  * * SEARCH ID to STRING UNIT * *
  */
