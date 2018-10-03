@@ -33,7 +33,7 @@ document.querySelector('button[type=submit].btn').addEventListener('click', func
 })
 
 window.onload = function () {
-    var km_autoinit = $.all('[km-autoinit]'),
+    var km_autoinit = $('[km-autoinit]'),
         stringName = (x, y) => {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
@@ -45,7 +45,7 @@ window.onload = function () {
             xmlhttp.open('GET', 'https://api.opendota.com/api/players/' + x, true);
             xmlhttp.send();
 
-            $.all('.playerid')[y].setAttribute('href', '/account/last-match.html?' + x);
+            $('.playerid')[y].setAttribute('href', '/matches/last.html?' + x);
         }
 
     for (var i = 0; i < km_autoinit.length; i++) {

@@ -1,0 +1,66 @@
+const error = (x) => $.solo('code#error').innerHTML += '<li>' + x + '</li>';
+const test = {
+    init: function (x) {
+        var kmCode = $.all('[km-data]')[x],
+            kmData = kmCode.getAttribute('km-data'),
+            kmClass = kmData.split(' ');
+
+        let node = () => {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        kmCode.innerHTML = this.responseText;
+                    } else if (this.readyState == 4 && this.status != 200) {
+                        error(this.status);
+                    }
+                };
+                xhttp.open('GET', kmCode.getAttribute('km-url'), true);
+                xhttp.send();
+            },
+            run = () => {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        eval('try {' + this.responseText + ' } catch (e) { error(e.message) }');
+                    } else if (this.readyState == 4 && this.status != 200) {
+                        error(this.status);
+                    }
+                    kmCode.remove();
+                };
+                xhttp.open('GET', kmCode.getAttribute('km-url'), true);
+                xhttp.send();
+            }
+
+        for (var i = 0; i < kmClass.length; i++) {
+            try {
+                var func = kmClass[i];
+                eval('try {' + func + '()' + ' } catch (e) { error(e.message) }');
+            } catch (e) {
+                error(e.message)
+            }
+        }
+
+        return "";
+    }
+}
+
+
+let myTestScript = () => {
+    try {
+
+        _txt_ = test.init(0);
+
+    } catch (e) {
+
+        error(e.message);
+
+    } finally {
+
+        M.AutoInit();
+
+    }
+
+
+}
+
+window.addEventListener('load', myTestScript);

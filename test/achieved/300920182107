@@ -1,0 +1,59 @@
+const importSource = (cacheAs, path) => {
+    var host = 'https://api.opendota.com/api/';
+    var date = new Date();
+    var storage = localStorage.getItem(cacheAs);
+
+    try {
+        var cached = JSON.parse(storage);
+        var cachedTime = cached.request;
+        var current = date.getTime();
+        var timeGap = (current - cachedTime) / 1000;
+
+        if (timeGap > 300) {} else {
+            request();
+        }
+    } catch (e) {
+        request();
+    }
+
+    function request() {
+        var timestamp = date.getTime();
+        var host = 'https://api.opendota.com/api/';
+        var http = new XMLHttpRequest();
+        http.onreadystatechange = function () {
+
+            if (this.readyState == 4) {
+                var res = '{\"request\": ' + timestamp + ', ' + '\"response\": ' + this.responseText + '}';
+                localStorage.setItem(cacheAs, res);
+                eval("importSource(" + cacheAs + "," + path + ")");
+            }
+
+        };
+        http.open('GET', host + path, true)
+        http.send();
+    }
+
+    console.debug('Requesting API from', host + path);
+    return JSON.parse(localStorage.getItem(cacheAs));
+}
+
+const $_DATA = {
+    profile: [],
+    match: []
+}
+
+var profile;
+window.onload = () => {
+    const _import = document.querySelectorAll('[km-function]');
+
+    for (var i = 0; i < _import.length; i++) {
+        var _storage = _import[i].getAttribute('as');
+        var _from = (_import[i].getAttribute('from') || '');
+        var _in = (_import[i].getAttribute('in') || '');
+        var url = _from + '/' + account_id + '/' + _in;
+        importSource(_storage, url);
+
+    }
+
+    /* end of the function */
+}
