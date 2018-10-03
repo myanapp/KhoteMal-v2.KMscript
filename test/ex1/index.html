@@ -10,7 +10,6 @@
     <script src="/assets/dist/materialize/materialize.min.js" defer=""></script>
 
     <title>TEST PAGE [KHOTEMAL]</title>
-    <script src="/assets/global-search.js" defer="" async=""></script>
 
     <style id="test-style">
         code.test {
@@ -393,11 +392,12 @@
                 </div>
             </div>
 
-            <div km-function="import" as="profile" from="players" />
-            <div km-function="import" as="recents" from="players" in="recentMatches" />
-            <div km-function="script" from="test.js" />
+            <div km-function="import" as="profile" from="players"></div>
+            <div km-function="import" as="recents" from="players" in="recentMatches"></div>
+            <div km-function="script" from="test.js"></div>
 
             <!-- MAIN SCRIPT FOR GLOBAL [TEST] -->
+            <script src="/assets/global-search.js" defer="" async=""></script>
             <script>
                 //* TESTING *
                 const $test = {
@@ -414,6 +414,7 @@
                 var account_id = 194624542
             </script>
             <script src="index.js" async="" defer=""></script>
+
 </body>
 
 </html>

@@ -12,26 +12,28 @@ const $ = (x) => {
  */
 const KM = {
   init: {
-    nav: function () {
+    nav: () => {
       var ul = document.querySelectorAll('[km-menu]');
-      var menu = new XMLHttpRequest();
-      menu.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          var res = JSON.parse(this.responseText);
-          for (var i = 0; i < res.length; i++) {
-            var li = document.createElement('li');
-            var a = document.createElement('a');
-            var txt = document.createTextNode(res[i].node);
-            a.setAttribute('href', res[i].href);
-            a.appendChild(txt)
-            li.appendChild(a);
-            ul[0].appendChild(li);
-            ul[1].appendChild(li);
+      if (ul) {
+        var menu = new XMLHttpRequest();
+        menu.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var res = JSON.parse(this.responseText);
+            for (var i = 0; i < res.length; i++) {
+              li = document.createElement('li');
+              a = document.createElement('a');
+              txt = document.createTextNode(res[i].node);
+              a.setAttribute('href', res[i].href);
+              a.appendChild(txt);
+              li.appendChild(a);
+              ul[0].appendChild(li),
+                ul[1].appendChild(li);
+            }
           }
         }
+        menu.open('GET', '/assets/nav-menu.json', true);
+        menu.send();
       }
-      menu.open('GET', '/assets/nav-menu.json', true);
-      menu.send();
     }
   },
   request: (x) => {
