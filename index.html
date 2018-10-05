@@ -7,11 +7,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="/assets/dist/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="/assets/layout/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <script src="/assets/dist/materialize/materialize.min.js" defer=""></script>
   <title>Homepage [KHOTEMAL]</title>
 </head>
 
-<body>
+<body style="overflow:hidden">
+  <div id="overlay">
+    <div id="notice">
+      <div class="loader"></div>
+    </div>
+  </div>
+
   <!-- Nav Section -->
   <nav class="blue darken-3" role="navigation">
 
@@ -99,8 +104,16 @@
     </div>
   </footer>
 
+  <script src="/assets/dist/materialize/materialize.min.js" defer=""></script>
   <script src="/assets/global-search.js" defers=""></script>
-
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        KM.overlay(0);
+        document.body.style = "overflow:auto"
+      }, 220);
+    }
+  </script>
 </body>
 
 </html>

@@ -7,32 +7,32 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="/assets/dist/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="/assets/layout/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <script src="/assets/dist/materialize/materialize.min.js" defer=""></script>
 
     <title>Register [KHOTEMAL]</title>
-    <script src="/assets/global-search.js" defer="" async=""></script>
 
 </head>
 
-<body onload="M.AutoInit()">
-    <!-- Nav Section -->
+<body style="overflow:hidden">
+    <div id="overlay">
+        <div id="notice">
+            <div class="loader"></div>
+        </div>
+    </div>
+     <!-- Nav Section -->
     <nav class="blue darken-3" role="navigation">
-
         <a href="/" class="brand-logo">
-          <img class="brand-logo" src="/assets/images/logo-white-adjTransparent.png" height="58px">
+            <img class="brand-logo" src="/assets/images/logo-white-adjTransparent.png" height="58px">
         </a>
         <a href="javascript:void(0);" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    
+
         <ul class="right hide-on-med-and-down" km-menu="desktop">
-          <!-- Desktop-NavMenu -->
+            <!-- Desktop-NavMenu -->
         </ul>
         <ul id="nav-mobile" class="sidenav blue darken-4" km-menu="mobile">
-          <li class="logo">
-            <img src="/assets/images/logo-white-adjTransparent.png">
-          </li>
-          <!-- Mobile-NavMenu -->
+            <li class="logo"> <img src="/assets/images/logo-white-adjTransparent.png"> </li>
+            <!-- Mobile-NavMenu -->
         </ul>
-      </nav>
+    </nav>
 
     <!-- Contents -->
     <div class="container">
@@ -58,10 +58,11 @@
         </div>
 
         <div class="collection">
-            <a class="collection-item playerid"><span class="badge">1</span> <span id="" km-autoinit="player_id">373924056</span> </a>
-            <a class="collection-item playerid"><span class="new badge">4</span>  <span id="" km-autoinit="player_id">326044547</span></a>
+            <a class="collection-item playerid"> <span id="" km-autoinit="player_id">373924056</span></a>
+            <a class="collection-item playerid"> <span id="" km-autoinit="player_id">326044547</span></a>
             <a class="collection-item playerid"> <span id="" km-autoinit="player_id">349652911</span> </a>
-            <a class="collection-item playerid"><span class="badge">14</span>  <span id="" km-autoinit="player_id">896811688</span></a>
+            <a class="collection-item playerid"> <span id="" km-autoinit="player_id">336490447</span></a>
+            <a class="collection-item playerid"> <span id="" km-autoinit="player_id">329173477</span></a>
         </div>
 
         <br><br>
@@ -80,6 +81,7 @@
             </div>
         </div>
 
+
         <div class="footer-copyright blue darken-3">
             <div class="container">
                 Powered by <a class="blue-text text-lighten-3" href="javascript:void(0)">Ethereal</a> <kbd>&</kbd>
@@ -88,8 +90,9 @@
         </div>
     </footer>
 
-    <script src="index.js" defer=""></script>
-    <script src="/assets/global-search.js" defer=""></script>
+    <script src="/assets/dist/materialize/materialize.min.js" defer></script>
+    <script src="/assets/global-search.js" defer></script>
+    <script src="index.js" defer></script>
 
 </body>
 

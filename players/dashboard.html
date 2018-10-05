@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/assets/dist/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/assets/layout/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <title>Dashboard [KHOTEMAL]</title>
+
+</head>
+
+<body style="overflow:hidden">
+    <div id="overlay">
+        <div id="notice">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- Nav Section -->
+    <nav class="blue darken-3" role="navigation">
+
+        <a href="/" class="brand-logo">
+            <img class="brand-logo" src="/assets/images/logo-white-adjTransparent.png" height="58px">
+        </a>
+        <a href="javascript:void(0);" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down" km-menu="desktop">
+            <!-- Desktop-NavMenu -->
+        </ul>
+        <ul id="nav-mobile" class="sidenav blue darken-4" km-menu="mobile">
+            <li class="logo">
+                <img src="/assets/images/logo-white-adjTransparent.png">
+            </li>
+            <!-- Mobile-NavMenu -->
+        </ul>
+    </nav>
+
+    <style>
+        .card {
+            max-width: 260px;
+            margin: auto;
+        }
+
+        .km-tag.null::after {
+            content: 'nodata';
+        }
+    </style>
+
+    <!-- Contents -->
+    <div class="container">
+        <div class="section" id="icon-status">
+
+            <div class="row">
+                <div class="col s12">
+                    <!-- Radiant Players -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="avatar-img" src="/assets/images/undefined.jpg">
+                            <km required="players" id="avatar-src" data="profile.avatarfull" style="display:none">$('#avatar-img').src=data</km>
+                            <span class="card-title">
+                                <km required="players" data="profile.personaname"></km>
+                            </span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                <km required="players" data="rank_tier">thix.innerText=rank_tier(o)</km>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <km required="recentMatches" data=""></km>
+
+        <br /> <br />
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="page-footer blue darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="javascript:void(0)">Link 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright blue darken-3">
+            <div class="container">
+                Powered by <a class="blue-text text-lighten-3" href="javascript:void(0)">Ethereal</a> <kbd>&</kbd>
+                <a class="blue-text text-lighten-3" href="javascript:void(0)">Myanma Saungkyo Co., Ltd.</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/dist/materialize/materialize.min.js" defer></script>
+    <script src="/assets/global-search.js" defer></script>
+    <script src="dashboard.js" defer></script>
+
+</body>
+
+</html>

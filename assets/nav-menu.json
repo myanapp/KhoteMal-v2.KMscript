@@ -1,7 +1,14 @@
-[{
-  "node": "မူလစာမ်က္ႏွာ",
-  "href": "/index.html"
-}, {
-  "node": "အေကာင့္ရွာေဖြ",
-  "href": "/search/index.html"
-}]
+{
+  "public": [{
+    "node": "မူလစာမ်က္ႏွာ",
+    "href": "/index.html"
+  }, {
+    "node": "အေကာင့္ရွာေဖြ",
+    "href": "/search/index.html"
+  }],
+  "private": [{
+    "node": "သင့္အေၾကာင္း",
+    "href": "/players/dashboard.html",
+    "permission": 1
+  }]
+}

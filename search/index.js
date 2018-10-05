@@ -7,8 +7,13 @@ document.querySelector('button[type=submit].btn').addEventListener('click', func
     isLthOk = Boolean(10 >= String(acc_id).length && 8 <= String(acc_id).length);
 
     if (isNum == true && isLthOk == true) {
-        console.log('working...')
-        KM('ajax', 'https://api.opendota.com/api/players/' + acc_id, '$_ACCOUNT');
+        M.toast({
+            html: 'ေဆာင္ရြက္ေနသည္...',
+            completeCallback: () => {
+                KM.$['COOKIE'].set('account-id', $('input[name=id]').value, 0.5);
+                location.replace('/players/dashboard.html');
+            }
+        })
 
     } else {
 
@@ -24,12 +29,6 @@ document.querySelector('button[type=submit].btn').addEventListener('click', func
         }
 
     }
-
-    M.toast({
-        html: 'ေဆာင္ရြက္ေနသည္...',
-        completeCallback: () => location.replace('/#id=' + acc_id.value + '=' + (new Date()).getTime())
-    })
-
 })
 
 window.onload = function () {
@@ -52,5 +51,7 @@ window.onload = function () {
         innerText = km_autoinit[i].innerText;
         stringName(innerText, i);
     }
+    
+    KM.overlay(0);
 
 }

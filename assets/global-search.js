@@ -11,6 +11,46 @@ const $ = (x) => {
  * * SEARCH ID to STRING UNIT * *
  */
 const KM = {
+  $: {
+    GET: (x) => {
+      var ls = location.search.slice(1);
+      var dx = ls.indexOf(x);
+      ls = ls.slice(dx)
+      try {
+        ls = ls.split('&');
+      } catch (e) {}
+      dx = ls[0];
+      dx = dx.split('=')[1];
+      return dx;
+    },
+    SESSION: function () {
+      x1 = this.COOKIE['get']('account-id');
+      return Boolean(Number(x1) > 0)
+    },
+    path: location.pathname.slice(1).split('/'),
+    COOKIE: {
+      set: (name, value, expire) => {
+        var d = new Date();
+        d.setTime(d.getTime() + (expire * 60 * 60 * 1000)); /*expire in hours*/
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = window.btoa(name) + "=" + window.btoa(value) + ";" + expires + ";path=/";
+      },
+      get: (cookie) => {
+        var name = window.btoa(cookie) + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return window.atob(c.substring(name.length, c.length));
+          }
+        }
+        return "";
+      }
+    }
+  },
   init: {
     nav: () => {
       var ul = document.querySelectorAll('[km-menu]');
@@ -19,28 +59,55 @@ const KM = {
         menu.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             var res = JSON.parse(this.responseText);
-            for (var i = 0; i < res.length; i++) {
+            for (var i = 0; i < res['public'].length; i++) {
               li = document.createElement('li');
               a = document.createElement('a');
-              txt = document.createTextNode(res[i].node);
-              a.setAttribute('href', res[i].href);
+              txt = document.createTextNode(res.public[i].node);
+
+              a.setAttribute('href', res.public[i].href);
               a.appendChild(txt);
               li.appendChild(a);
-              ul[0].appendChild(li),
-                ul[1].appendChild(li);
+              ul[1].appendChild(li);
             }
+
+            if (KM.$['SESSION'] == true) {
+              for (var i = 0; i < res['private'].length; i++) {
+                switch (res[i].permission && KM.$['SESSION']() == true) {
+                  case 1:
+                    a.setAttribute('href', res.private[i].href);
+                    a.appendChild(txt);
+                    li.appendChild(a);
+                    ul[1].appendChild(li);
+                    break;
+                }
+              }
+            }
+
+            M.AutoInit();
+            setTimeout(() => {
+              window.afterLoad();
+            }, 120)
           }
         }
-        menu.open('GET', '/assets/nav-menu.json', true);
-        menu.send();
       }
+      menu.open('GET', '/assets/nav-menu.json', true);
+      menu.send();
+      return true;
     }
   },
-  request: (x) => {
+  request: (x, y) => {
     xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        $_ACCOUNT.push(JSON.parse(this.responseText))
+        var res = this.responseText;
+        switch (y) {
+          case null:
+            res = JSON.parse(res);
+            $_ACCOUNT.push(res);
+            break;
+          default:
+            eval(y);
+        }
       }
     }
     xmlhttp.open('GET', x, true)
@@ -1197,10 +1264,73 @@ const KM = {
 
       return $data_[x];
     }
+  },
+  overlay: (x) => {
+    switch (x) {
+      case 1:
+        $('#overlay').setAttribute('class', 'visbe');
+        $('body').setAttribute('style', 'overlay:hidden');
+        break;
+      case 0:
+        $('#overlay').setAttribute('class', 'invis');
+        $('body').setAttribute('style', 'overlay:auto');
+        break;
+    }
   }
 }
 
-window.onload = () => {
-  KM.init['nav']();
-  M.AutoInit();
+
+// after content page loaded
+var session_user = KM.$['SESSION'](),
+  router = KM.$.path[0];;
+console.log(session_user, typeof session_user, router, typeof router);
+
+if (session_user == true) {
+  if (KM.$['path'][0] == "search") {
+    location.replace('/players/dashboard.html');
+  }
+} else {
+  switch (router) {
+    case "players":
+    case "matches":
+      location.assign('/search/index.html?not-session-user');
+  }
+}
+
+nav = KM.init['nav']();
+
+function afterLoad() {
+  var link = {
+    a: document.querySelectorAll('[href]')
+  }
+
+  for (var i = 0; i < link['a'].length; i++) {
+    clickFunction(link['a'][i])
+  }
+
+  function clickFunction(elem) {
+    if (elem.tagName.search(/link/i) == 0) {
+      return "";
+    } else {
+      if (elem.className.search('sidenav-trigger') == 0) {
+        return "";
+      } else {
+        var href = elem.href;
+        console.log(href);
+        elem.addEventListener('click', () => {
+          KM.overlay(1);
+          setTimeout(() => {
+            location.assign(href);
+          }, 900)
+        })
+        elem.href = 'javascript:void(0)';
+      }
+    }
+  }
+
+  if (location.search.slice(1) == 'not-session-user') {
+    M.toast({
+      html: 'အေကာာင့္ ID အားျဖည့္ရန္လိုအပ္သည္။'
+    });
+  }
 }
